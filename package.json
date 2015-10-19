@@ -1,0 +1,28 @@
+{
+  "name": "tweet-to-html",
+  "version": "1.0.0",
+  "description": "This package convert twitter's API tweet objects to HTML. Takes care of all the entities and its links.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blessenm/tweet-to-html.git"
+  },
+  "keywords": [
+    "twitter",
+    "tweet",
+    "api",
+    "html",
+    "entities",
+    "autolink",
+    "autolinker"
+  ],
+  "author": "Blessan Mathew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blessenm/tweet-to-html/issues"
+  },
+  "homepage": "https://github.com/blessenm/tweet-to-html#readme"
+}
