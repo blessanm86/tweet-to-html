@@ -1,3 +1,4 @@
+var twemoji = require('twemoji' );
 var tweetArr = require('./tweets.json' );
 
 var entityProcessors = {
@@ -47,10 +48,15 @@ function processMedia(media, tweetObj) {
   });
 }
 
+function processEmoji(tweetObj) {
+  tweetObj.text = twemoji.parse(tweetObj.text);
+}
+
 function parseTweet(tweetObj) {
   var entities = tweetObj.entities;
   var processorObj;
 
+  //Process entities
   if(Object.getOwnPropertyNames(entities).length) {
     Object.keys(entities).forEach(function(entity) {
       if(entities[entity].length) {
@@ -64,11 +70,14 @@ function parseTweet(tweetObj) {
     });
   }
 
+  //Process Emoji's
+  processEmoji(tweetObj);
+
   return tweetObj;
 }
 
 
 
 
-var parsedObj = parseTweet(tweetArr[2]);
+var parsedObj = parseTweet(tweetArr[3]);
 console.log(parsedObj.text);

@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/blessenm/tweet-to-html/issues"
   },
-  "homepage": "https://github.com/blessenm/tweet-to-html#readme"
+  "homepage": "https://github.com/blessenm/tweet-to-html#readme",
+  "dependencies": {
+    "twemoji": "^1.4.1"
+  }
 }
