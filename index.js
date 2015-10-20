@@ -1,8 +1,4 @@
-//Tweet with multiple links
-//var tweetObj = require('./tweet.json' );
-
-//Tweet with link, pic and mention
-var tweetObj = require('./tweet2.json' );
+var tweetArr = require('./tweets.json' );
 
 var entityProcessors = {
   hashtags: processHashTags,
@@ -13,10 +9,13 @@ var entityProcessors = {
 }
 
 function processHashTags(tags, tweetObj) {
+  tags.forEach(function(tagObj) {
+    var anchor = ('#' + tagObj.text).link('http://twitter.com/hashtag/' + tagObj.text);
+    tweetObj.text = tweetObj.text.replace('#' + tagObj.text, anchor);
+  });
 }
 
-function processSymbols(symbols, tweetObj) {
-}
+function processSymbols(symbols, tweetObj) {}
 
 function processUserMentions(users, tweetObj) {
   users.forEach(function(userObj) {
@@ -37,17 +36,30 @@ function processMedia(media, tweetObj) {
     if(mediaObj.type === 'photo') {
       var image = '<img src="' + mediaObj.media_url + '"/>';
       tweetObj.text = tweetObj.text.replace(mediaObj.url, image);
+    } else if(mediaObj.type === 'video') {
+      var source = '';
+      mediaObj.video_info.variants.forEach(function(info) {
+        source += '<source src="'+ info.url +'" type="'+ info.content_type +'">';
+      });
+      var video = '<video controls poster="' + mediaObj.media_url +'">' + source + '</video>';
+      tweetObj.text = tweetObj.text.replace(mediaObj.url, video);
     }
   });
 }
 
 function parseTweet(tweetObj) {
   var entities = tweetObj.entities;
+  var processorObj;
 
   if(Object.getOwnPropertyNames(entities).length) {
     Object.keys(entities).forEach(function(entity) {
       if(entities[entity].length) {
-        entityProcessors[entity](entities[entity], tweetObj);
+        processorObj = entities[entity];
+
+        //Need to check if entity is media. If so, extended_entities should be used
+        processorObj = entity === 'media' ? tweetObj.extended_entities.media : processorObj;
+
+        entityProcessors[entity](processorObj, tweetObj);
       }
     });
   }
@@ -58,5 +70,5 @@ function parseTweet(tweetObj) {
 
 
 
-var parsedObj = parseTweet(tweetObj[0]);
+var parsedObj = parseTweet(tweetArr[2]);
 console.log(parsedObj.text);
