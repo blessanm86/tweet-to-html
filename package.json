@@ -4,7 +4,7 @@
   "description": "This package convert twitter's API tweet objects to HTML. Takes care of all the entities and its links.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "vasync": "^1.6.3"
   },
   "devDependencies": {
-    "chai": "^3.4.0"
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
   }
 }
