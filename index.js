@@ -2,8 +2,6 @@ var twemoji = require('twemoji' );
 var vasync = require('vasync' );
 var util = require('util');
 
-var tweetArr = require('./tweets.json' );
-
 var entityProcessors = {
   hashtags: processHashTags,
   symbols: processSymbols,
@@ -108,21 +106,3 @@ function parseTweets(tweets, callback) {
 
 
 module.exports.parse = parseTweets;
-
-//async multiple
-parseTweets(tweetArr, function(tweets){
-  console.log('async multiple', '\r\n', tweets[0].text, '\r\n');
-});
-
-//async single
-parseTweets(tweetArr[0], function(tweets){
-  console.log('async single', '\r\n', tweets.text, '\r\n');
-});
-
-//sync multiple
-var tweets = parseTweets(tweetArr);
-console.log('sync multiple', '\r\n', tweets[0].text, '\r\n');
-
-//sync single
-var tweet = parseTweets(tweetArr[0]);
-console.log('sync single', '\r\n', tweet.text, '\r\n');
