@@ -26,8 +26,7 @@
   },
   "homepage": "https://github.com/blessenm/tweet-to-html#readme",
   "dependencies": {
-    "twemoji": "^1.4.1",
-    "vasync": "^1.6.3"
+    "twemoji": "^1.4.1"
   },
   "devDependencies": {
     "chai": "^3.4.0",

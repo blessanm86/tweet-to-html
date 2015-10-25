@@ -1,6 +1,4 @@
 var twemoji = require('twemoji' );
-var vasync = require('vasync' );
-var util = require('util');
 
 var entityProcessors = {
   hashtags: processHashTags,
@@ -53,7 +51,7 @@ function processEmoji(tweetObj) {
   tweetObj.text = twemoji.parse(tweetObj.text);
 }
 
-function parseTweet(tweetObj, callback) {
+function parseTweet(tweetObj) {
   var entities = tweetObj.entities;
   var processorObj;
 
@@ -74,34 +72,16 @@ function parseTweet(tweetObj, callback) {
   //Process Emoji's
   processEmoji(tweetObj);
 
-  if(util.isFunction(callback)) {
-    callback(null, tweetObj);
-  } else {
-    return tweetObj;
-  }
+  return tweetObj;
 }
 
-function parseTweets(tweets, callback) {
+function parseTweets(tweets) {
   tweets = JSON.parse(JSON.stringify(tweets));
 
   var isMultiple = false;
-
   isMultiple = Array.isArray(tweets);
 
-  if(callback) {
-    tweets = Array.isArray(tweets) ? tweets : [tweets];
-
-    vasync.forEachParallel({
-      func: parseTweet,
-      inputs: tweets
-    }, (err, results) => {
-        results = results.successes;
-        results = isMultiple ? results : results[0];
-        callback(results);
-    });
-  } else {
-    return isMultiple ? tweets.map(parseTweet) : parseTweet(tweets);
-  }
+  return isMultiple ? tweets.map(parseTweet) : parseTweet(tweets);
 }
 
 
