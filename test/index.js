@@ -17,19 +17,19 @@ var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tw
 
 describe("Synchronous and Single Tweet Test Suite", function() {
   it('Synchonous parsing of video in tweet is successful', function() {
-    assert.strictEqual(parse(tweetWithVideo).text, tweetWithVideoExpected);
+    assert.strictEqual(parse(tweetWithVideo).html, tweetWithVideoExpected);
   });
 
   it('Synchonous parsing of emoji in tweet is successful', function() {
-    assert.strictEqual(parse(tweetWithEmoji).text, tweetWithEmojiExpected);
+    assert.strictEqual(parse(tweetWithEmoji).html, tweetWithEmojiExpected);
   });
 
   it('Synchonous parsing of hashtag in tweet is successful', function() {
-    assert.strictEqual(parse(tweetWithHashtag).text, tweetWithHashtagExpected);
+    assert.strictEqual(parse(tweetWithHashtag).html, tweetWithHashtagExpected);
   });
 
   it('Synchonous parsing of links, pic, and mention in tweet is successful', function() {
-    assert.strictEqual(parse(tweetWithLinksPicMention).text, tweetWithLinksPicMentionExpected);
+    assert.strictEqual(parse(tweetWithLinksPicMention).html, tweetWithLinksPicMentionExpected);
   });
 });
 
@@ -40,7 +40,7 @@ describe("Synchronous and Multiple Tweets Test Suite", function() {
     parse(multipleTweets, (tweets) => {
       tweets.forEach((tweet, index) => {
         assert.strictEqual(
-          tweet.text,
+          tweet.html,
           multipleTweetsExpected[index]
         );
       });
