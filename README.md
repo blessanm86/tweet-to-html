@@ -1,6 +1,7 @@
 # tweet-to-html
 
 [![Build Status](https://travis-ci.org/blessenm/tweet-to-html.svg?branch=master)](https://travis-ci.org/blessenm/tweet-to-html)
+[![npm version](https://badge.fury.io/js/tweet-to-html.svg)](https://badge.fury.io/js/tweet-to-html)
 
 Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.
 
