@@ -4,7 +4,8 @@
   "description": "Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "browserify demo/js/demo.js -o demo/js/browserify-build.js"
   },
   "repository": {
     "type": "git",
