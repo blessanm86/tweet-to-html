@@ -1,7 +1,7 @@
 {
   "name": "tweet-to-html",
   "version": "1.0.0",
-  "description": "This package convert twitter's API tweet objects to HTML. Takes care of all the entities and its links.",
+  "description": "Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -17,9 +17,14 @@
     "html",
     "entities",
     "autolink",
-    "autolinker"
+    "autolinker",
+    "emoji"
   ],
-  "author": "Blessan Mathew",
+  "author": {
+    "name": "Blessan Mathew",
+    "email": "blessenm@gmail.com",
+    "url": "http://blessanmathew.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/blessenm/tweet-to-html/issues"

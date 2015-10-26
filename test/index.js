@@ -1,4 +1,4 @@
-var TweetToHTML = require('../');
+var tweetToHTML = require('../');
 var assert = require('chai').assert;
 var tweetWithVideo = require('./tweets/tweet-with-video');
 var tweetWithVideoExpected = require('./tweets/tweet-with-video-expected');
@@ -9,7 +9,7 @@ var tweetWithHashtagExpected = require('./tweets/tweet-with-hashtag-expected');
 var tweetWithLinksPicMention = require('./tweets/tweet-with-links-pic-mention');
 var tweetWithLinksPicMentionExpected = require('./tweets/tweet-with-links-pic-mention-expected');
 
-var parse = TweetToHTML.parse;
+var parse = tweetToHTML.parse;
 var multipleTweets = [tweetWithVideo, tweetWithEmoji, tweetWithHashtag, tweetWithLinksPicMention];
 var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tweetWithHashtagExpected, tweetWithLinksPicMentionExpected];
 
