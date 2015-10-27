@@ -8,10 +8,12 @@ var tweetWithHashtag = require('./tweets/tweet-with-hashtag');
 var tweetWithHashtagExpected = require('./tweets/tweet-with-hashtag-expected');
 var tweetWithLinksPicMention = require('./tweets/tweet-with-links-pic-mention');
 var tweetWithLinksPicMentionExpected = require('./tweets/tweet-with-links-pic-mention-expected');
+var tweetWitUsernameMixedCases = require('./tweets/tweet-with-username-mixed-cases');
+var tweetWitUsernameMixedCasesExpected = require('./tweets/tweet-with-username-mixed-cases-expected');
 
 var parse = tweetToHTML.parse;
-var multipleTweets = [tweetWithVideo, tweetWithEmoji, tweetWithHashtag, tweetWithLinksPicMention];
-var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tweetWithHashtagExpected, tweetWithLinksPicMentionExpected];
+var multipleTweets = [tweetWithVideo, tweetWithEmoji, tweetWithHashtag, tweetWithLinksPicMention, tweetWitUsernameMixedCases];
+var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tweetWithHashtagExpected, tweetWithLinksPicMentionExpected, tweetWitUsernameMixedCasesExpected];
 
 
 
@@ -29,6 +31,10 @@ describe("Synchronous and Single Tweet Test Suite", function() {
   });
 
   it('Synchonous parsing of links, pic, and mention in tweet is successful', function() {
+    assert.strictEqual(parse(tweetWithLinksPicMention).html, tweetWithLinksPicMentionExpected);
+  });
+
+  it('Synchonous parsing of usernames with mixed cases in tweet is successful', function() {
     assert.strictEqual(parse(tweetWithLinksPicMention).html, tweetWithLinksPicMentionExpected);
   });
 });
