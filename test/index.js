@@ -11,9 +11,12 @@ var tweetWithLinksPicMentionExpected = require('./tweets/tweet-with-links-pic-me
 var tweetWitUsernameMixedCases = require('./tweets/tweet-with-username-mixed-cases');
 var tweetWitUsernameMixedCasesExpected = require('./tweets/tweet-with-username-mixed-cases-expected');
 
+var tweetBug3 = require('./tweets/tweet-bug-3');
+var tweetBug3Expected = require('./tweets/tweet-bug-3-expected');
+
 var parse = tweetToHTML.parse;
-var multipleTweets = [tweetWithVideo, tweetWithEmoji, tweetWithHashtag, tweetWithLinksPicMention, tweetWitUsernameMixedCases];
-var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tweetWithHashtagExpected, tweetWithLinksPicMentionExpected, tweetWitUsernameMixedCasesExpected];
+var multipleTweets = [tweetWithVideo, tweetWithEmoji, tweetWithHashtag, tweetWithLinksPicMention, tweetWitUsernameMixedCases, tweetBug3];
+var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tweetWithHashtagExpected, tweetWithLinksPicMentionExpected, tweetWitUsernameMixedCasesExpected, tweetBug3Expected];
 
 
 

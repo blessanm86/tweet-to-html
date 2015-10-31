@@ -61,8 +61,11 @@ function processUserMentions(users, tweetObj) {
 
 function processUrls(urls, tweetObj) {
   urls.forEach((urlObj) => {
+    var indices = urlObj.indices;
+    var urlToReplace = tweetObj.text.substring(indices[0],indices[1]);
+
     var anchor = urlObj.display_url.link(urlObj.expanded_url);
-    tweetObj.html = tweetObj.html.replace(urlObj.url, anchor);
+    tweetObj.html = tweetObj.html.replace(urlToReplace, anchor);
   });
 }
 
