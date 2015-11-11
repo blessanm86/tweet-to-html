@@ -60,12 +60,18 @@ function processUserMentions(users, tweetObj) {
 }
 
 function processUrls(urls, tweetObj) {
-  urls.forEach((urlObj) => {
+  urls.forEach((urlObj, index) => {
+    var quotedTweetHtml = '';
     var indices = urlObj.indices;
     var urlToReplace = tweetObj.text.substring(indices[0],indices[1]);
 
-    var anchor = urlObj.display_url.link(urlObj.expanded_url);
-    tweetObj.html = tweetObj.html.replace(urlToReplace, anchor);
+    if(index === urls.length-1 && tweetObj.quoted_status) {
+      quotedTweetHtml = parseTweets(tweetObj.quoted_status).html;
+      quotedTweetHtml = `<div class="quoted-tweet">${quotedTweetHtml}</div>`
+    }
+
+    var finalText = quotedTweetHtml || urlObj.display_url.link(urlObj.expanded_url);
+    tweetObj.html = tweetObj.html.replace(urlToReplace, finalText);
   });
 }
 
