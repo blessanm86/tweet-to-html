@@ -10,6 +10,7 @@ var tweetWithLinksPicMention = require('./tweets/tweet-with-links-pic-mention');
 var tweetWithLinksPicMentionExpected = require('./tweets/tweet-with-links-pic-mention-expected');
 var tweetWitUsernameMixedCases = require('./tweets/tweet-with-username-mixed-cases');
 var tweetWitUsernameMixedCasesExpected = require('./tweets/tweet-with-username-mixed-cases-expected');
+var tweetWithSpecifiedImgSizeExpected = require('./tweets/tweet-with-specified-img-size-expected');
 
 var tweetBug3 = require('./tweets/tweet-bug-3');
 var tweetBug3Expected = require('./tweets/tweet-bug-3-expected');
@@ -39,6 +40,10 @@ describe("Synchronous and Single Tweet Test Suite", function() {
 
   it('Synchonous parsing of usernames with mixed cases in tweet is successful', function() {
     assert.strictEqual(parse(tweetWithLinksPicMention).html, tweetWithLinksPicMentionExpected);
+  });
+
+  it('Synchonous parsing of picture with specified image size is successful', function() {
+    assert.strictEqual(parse(tweetWithLinksPicMention, { photoSize: 'thumb' }).html, tweetWithSpecifiedImgSizeExpected);
   });
 });
 
