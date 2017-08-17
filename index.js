@@ -18,6 +18,11 @@ function parseTweet(tweetObj) {
 
   var entities = tweetObj.entities;
   var processorObj;
+  
+  //Support for tweet_mode=extended
+  if (tweetObj.full_text) {
+    tweetObj.text = tweetObj.full_text;
+  }
 
   //Copying text value to a new property html. The final output will be set to this property
   tweetObj.html = tweetObj.text;
