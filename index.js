@@ -2,8 +2,10 @@ var twemoji = require('twemoji' );
 
 module.exports.parse = parseTweets;
 
+var options = {};
 
-function parseTweets(tweets) {
+function parseTweets(tweets, opts) {
+  options = opts;
   return Array.isArray(tweets) ? tweets.map(parseTweet) : parseTweet(tweets);
 }
 
@@ -78,7 +80,18 @@ function processUrls(urls, tweetObj) {
 function processMedia(media, tweetObj) {
   media.forEach((mediaObj) => {
     if(mediaObj.type === 'photo') {
-      var image = '<img src="' + mediaObj.media_url + '"/>';
+      // Use HTTPS if available
+      var src = mediaObj.media_url_https ? mediaObj.media_url_https : mediaObj.media_url;
+
+      if(options &&
+        options.photoSize &&
+        mediaObj.sizes &&
+        mediaObj.sizes[options.photoSize]) {
+        // If specified size is available, patch image src to use it
+        src = src + ':' + options.photoSize;
+      }
+
+      var image = '<img src="' + src + '"/>';
       tweetObj.html = tweetObj.html.replace(mediaObj.url, image);
     } else if(mediaObj.type === 'video') {
       var source = '';

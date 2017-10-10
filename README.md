@@ -17,7 +17,7 @@ npm install tweet-to-html -S
 
 ## Usage
 
-There is only one method named `parse`. You can pass in a tweet object or an array of objects. The response will be object/array tweet object with a new property named `html` with the parsed output.
+There is only one method named `parse`. You can pass in a tweet object or an array of objects, and an optional config object. The response will be object/array tweet object with a new property named `html` with the parsed output.
 
 
 ```
@@ -25,6 +25,12 @@ var tweetToHTML = require('tweet-to-html');
 
 var result  = tweetToHTML.parse(tweetObj); //Single tweet object
 var results = tweetToHTML.parse(tweetArr); //Multiple tweets in an array
+
+var photoConfig = {
+  photoSize: 'large' // Any size supported by the `media` entity (thumb, small, medium...)
+};
+
+var result  = tweetToHTML.parse(tweetObj, photoConfig); //Single tweet object with specified image size
 
 //output
 console.log(result.html);
