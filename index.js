@@ -21,9 +21,14 @@ function parseTweet(tweetObj) {
   var entities = tweetObj.entities;
   var processorObj;
 
-  //Copying text value to a new property html. The final output will be set to this property
   //When extended_mode is enabled, the text property will be empty and the value of the html property will be set to the full_text value
-  tweetObj.html = tweetObj.text || tweetObj.full_text ;
+  //Replace the text property because the property is used in other functions (i.e. processUrls)
+  if (tweetObj.full_text) {
+    tweetObj.text = tweetObj.full_text;
+  }
+
+  //Copying text value to a new property html. The final output will be set to this property
+  tweetObj.html = tweetObj.text
 
   //Process entities
   if(Object.getOwnPropertyNames(entities).length) {
