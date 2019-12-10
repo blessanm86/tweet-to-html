@@ -28,7 +28,7 @@ function parseTweet(tweetObj) {
   }
 
   //Copying text value to a new property html. The final output will be set to this property
-  tweetObj.html = tweetObj.text
+  tweetObj.html = tweetObj.text;
 
   //Process entities
   if(Object.getOwnPropertyNames(entities).length) {
