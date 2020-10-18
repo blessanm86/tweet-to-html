@@ -37,7 +37,7 @@ console.log(result.html);
 console.log(results[0].html);
 ```
 
-##Issues Or Contributions
+## Issues Or Contributions
 
 - Post issues/enhancements in the github issue tracker.
 - My email is blessanm86@gmail.com
