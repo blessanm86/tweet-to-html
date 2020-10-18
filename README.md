@@ -42,6 +42,6 @@ console.log(results[0].html);
 - Post issues/enhancements in the github issue tracker.
 - My email is blessanm86@gmail.com
 - Pull requests are welcome.
-- [**Follow Me On Twitter**](https://twitter.com/blessenm86 "Follow Me On Twitter")
+- [**Follow Me On Twitter**](https://twitter.com/blessanm86 "Follow Me On Twitter")
 - [**LinkedIn Pofile**](http://in.linkedin.com/pub/blessan-mathew/24/605/730 "LinkedIn Profie")
 - [**Stack Overflow Pofile**](http://stackoverflow.com/users/548568/blessenm "Stack Overflow Pofile")
