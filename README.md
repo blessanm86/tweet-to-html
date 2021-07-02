@@ -7,7 +7,7 @@ Browser friendly package that converts twitter's API tweet objects text property
 
 ## Demo
 
-http://blessanmathew.com/tweet-to-html
+http://blessanm86.github.io/tweet-to-html/
 
 ## Installation
 
