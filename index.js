@@ -13,12 +13,12 @@ function parseTweet(tweetObj) {
   var entityProcessors = {
     hashtags: processHashTags,
     symbols: processSymbols,
-    user_mentions: processUserMentions,
+    mentions: processUserMentions,
     urls: processUrls,
     media: processMedia
   };
 
-  var entities = tweetObj.entities;
+  var entities = tweetObj.entities || {};
   var processorObj;
 
   //When extended_mode is enabled, the text property will be empty and the value of the html property will be set to the full_text value
@@ -38,15 +38,18 @@ function parseTweet(tweetObj) {
 
         //Need to check if entity is media. If so, extended_entities should be used
         processorObj = entity === 'media' ? tweetObj.extended_entities.media : processorObj;
-
-        entityProcessors[entity](processorObj, tweetObj);
+        if (!!entityProcessors[entity]) {
+          entityProcessors[entity](processorObj, tweetObj);
+        } else {
+          console.log('UNKNOWN ENTITY', entity);
+        }
       }
     });
   }
 
   //Process Emoji's
   processEmoji(tweetObj);
-
+  
   return tweetObj;
 }
 
@@ -61,8 +64,8 @@ function processSymbols(symbols, tweetObj) {}
 
 function processUserMentions(users, tweetObj) {
   users.forEach((userObj) => {
-    var anchor = ('@' + userObj.screen_name).link('http://twitter.com/' + userObj.screen_name);
-    var regex = new RegExp('@' + userObj.screen_name, 'gi' );
+    var anchor = ('@' + userObj.username).link('http://twitter.com/' + userObj.username);
+    var regex = new RegExp('@' + userObj.username, 'gi' );
     tweetObj.html = tweetObj.html.replace(regex, anchor);
   });
 }
@@ -70,7 +73,7 @@ function processUserMentions(users, tweetObj) {
 function processUrls(urls, tweetObj) {
   urls.forEach((urlObj, index) => {
     var quotedTweetHtml = '';
-    var indices = urlObj.indices;
+    var indices = [urlObj.start, urlObj.end];
     var urlToReplace = tweetObj.text.substring(indices[0],indices[1]);
 
     if(index === urls.length-1 && tweetObj.quoted_status) {
