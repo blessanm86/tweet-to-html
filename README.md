@@ -5,6 +5,10 @@
 
 Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.
 
+```
+To use with v1 Twitter API, use version 1.1.2
+```
+
 ## Demo
 
 http://blessanm86.github.io/tweet-to-html/

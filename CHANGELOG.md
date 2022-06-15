@@ -1,3 +1,7 @@
+## 2.0.0 (2022-06-15)
+
+ - Library now only supports v2 Twitter API
+
 ## 1.0.2 (2015-11-12)
 
 Bugfixes:
