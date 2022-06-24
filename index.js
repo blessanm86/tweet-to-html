@@ -57,8 +57,8 @@ function parseTweet(tweetObj) {
 
 function processHashTags(tags, tweetObj) {
   tags.forEach((tagObj) => {
-    var anchor = ('#' + tagObj.text).link('http://twitter.com/hashtag/' + tagObj.text);
-    tweetObj.html = tweetObj.html.replace('#' + tagObj.text, anchor);
+    var anchor = ('#' + tagObj.tag).link('http://twitter.com/hashtag/' + tagObj.tag);
+    tweetObj.html = tweetObj.html.replace('#' + tagObj.tag, anchor);
   });
 }
 
