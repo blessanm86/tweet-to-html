@@ -70,8 +70,9 @@ function processUserMentions(users, tweetObj) {
 function processUrls(urls, tweetObj) {
   urls.forEach((urlObj, index) => {
     var quotedTweetHtml = '';
-    var indices = urlObj.indices;
-    var urlToReplace = tweetObj.text.substring(indices[0],indices[1]);
+    var start = urlObj.start;
+    var end = urlObj.end;
+    var urlToReplace = tweetObj.text.substring(start,end);
 
     if(index === urls.length-1 && tweetObj.quoted_status) {
       quotedTweetHtml = parseTweets(tweetObj.quoted_status).html;
