@@ -57,7 +57,7 @@ function processHashTags(tags, tweetObj) {
   });
 }
 
-function processSymbols(symbols, tweetObj) {}
+function processSymbols(/*symbols, tweetObj*/) {}
 
 function processUserMentions(users, tweetObj) {
   users.forEach((userObj) => {

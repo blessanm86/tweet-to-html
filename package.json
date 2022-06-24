@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "browserify demo/js/demo.js -o demo/js/browserify-build.js"
+    "build": "browserify demo/js/demo.js -o demo/js/browserify-build.js",
+    "lint": "eslint . --cache"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "^3.4.0",
+    "eslint": "^8.18.0",
     "mocha": "^2.3.3"
   },
   "engines": {
