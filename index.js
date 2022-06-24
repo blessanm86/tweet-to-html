@@ -18,7 +18,7 @@ function parseTweet(tweetObj) {
     media: processMedia,
   };
 
-  var entities = tweetObj.entities;
+  var entities = tweetObj.entities || {};
   var processorObj;
 
   //When extended_mode is enabled, the text property will be empty and the value of the html property will be set to the full_text value
