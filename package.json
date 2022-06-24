@@ -38,7 +38,10 @@
   "devDependencies": {
     "chai": "^3.4.0",
     "eslint": "^8.18.0",
-    "mocha": "^2.3.3"
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "mocha": "^2.3.3",
+    "prettier": "^2.7.1"
   },
   "engines": {
     "node": "14.* || >= 16"
@@ -46,5 +49,8 @@
   "volta": {
     "node": "16.15.1",
     "npm": "8.13.1"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
