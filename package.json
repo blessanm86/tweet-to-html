@@ -37,5 +37,12 @@
   "devDependencies": {
     "chai": "^3.4.0",
     "mocha": "^2.3.3"
+  },
+  "engines": {
+    "node": "14.* || >= 16"
+  },
+  "volta": {
+    "node": "16.15.1",
+    "npm": "8.13.1"
   }
 }
