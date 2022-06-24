@@ -16,48 +16,64 @@ var tweetBug3 = require('./tweets/tweet-bug-3');
 var tweetBug3Expected = require('./tweets/tweet-bug-3-expected');
 
 var parse = tweetToHTML.parse;
-var multipleTweets = [tweetWithVideo, tweetWithEmoji, tweetWithHashtag, tweetWithLinksPicMention, tweetWitUsernameMixedCases, tweetBug3];
-var multipleTweetsExpected = [tweetWithVideoExpected, tweetWithEmojiExpected, tweetWithHashtagExpected, tweetWithLinksPicMentionExpected, tweetWitUsernameMixedCasesExpected, tweetBug3Expected];
+var multipleTweets = [
+  tweetWithVideo,
+  tweetWithEmoji,
+  tweetWithHashtag,
+  tweetWithLinksPicMention,
+  tweetWitUsernameMixedCases,
+  tweetBug3,
+];
+var multipleTweetsExpected = [
+  tweetWithVideoExpected,
+  tweetWithEmojiExpected,
+  tweetWithHashtagExpected,
+  tweetWithLinksPicMentionExpected,
+  tweetWitUsernameMixedCasesExpected,
+  tweetBug3Expected,
+];
 
-
-
-describe("Synchronous and Single Tweet Test Suite", function() {
-  it('Synchonous parsing of video in tweet is successful', function() {
+describe('Synchronous and Single Tweet Test Suite', function () {
+  it('Synchonous parsing of video in tweet is successful', function () {
     assert.strictEqual(parse(tweetWithVideo).html, tweetWithVideoExpected);
   });
 
-  it('Synchonous parsing of emoji in tweet is successful', function() {
+  it('Synchonous parsing of emoji in tweet is successful', function () {
     assert.strictEqual(parse(tweetWithEmoji).html, tweetWithEmojiExpected);
   });
 
-  it('Synchonous parsing of hashtag in tweet is successful', function() {
+  it('Synchonous parsing of hashtag in tweet is successful', function () {
     assert.strictEqual(parse(tweetWithHashtag).html, tweetWithHashtagExpected);
   });
 
-  it('Synchonous parsing of links, pic, and mention in tweet is successful', function() {
-    assert.strictEqual(parse(tweetWithLinksPicMention).html, tweetWithLinksPicMentionExpected);
+  it('Synchonous parsing of links, pic, and mention in tweet is successful', function () {
+    assert.strictEqual(
+      parse(tweetWithLinksPicMention).html,
+      tweetWithLinksPicMentionExpected
+    );
   });
 
-  it('Synchonous parsing of usernames with mixed cases in tweet is successful', function() {
-    assert.strictEqual(parse(tweetWithLinksPicMention).html, tweetWithLinksPicMentionExpected);
+  it('Synchonous parsing of usernames with mixed cases in tweet is successful', function () {
+    assert.strictEqual(
+      parse(tweetWithLinksPicMention).html,
+      tweetWithLinksPicMentionExpected
+    );
   });
 
-  it('Synchonous parsing of picture with specified image size is successful', function() {
-    assert.strictEqual(parse(tweetWithLinksPicMention, { photoSize: 'thumb' }).html, tweetWithSpecifiedImgSizeExpected);
+  it('Synchonous parsing of picture with specified image size is successful', function () {
+    assert.strictEqual(
+      parse(tweetWithLinksPicMention, { photoSize: 'thumb' }).html,
+      tweetWithSpecifiedImgSizeExpected
+    );
   });
 });
 
-
-
-describe("Synchronous and Multiple Tweets Test Suite", function() {
-  it('Synchonous parsing of videos, emojis, hashtags, links, pics, and mentions in multiple tweets is successful', function() {
+describe('Synchronous and Multiple Tweets Test Suite', function () {
+  it('Synchonous parsing of videos, emojis, hashtags, links, pics, and mentions in multiple tweets is successful', function () {
     parse(multipleTweets, (tweets) => {
       tweets.forEach((tweet, index) => {
-        assert.strictEqual(
-          tweet.html,
-          multipleTweetsExpected[index]
-        );
+        assert.strictEqual(tweet.html, multipleTweetsExpected[index]);
       });
-    })
+    });
   });
 });
