@@ -78,19 +78,15 @@ function processUserMentions(users, tweetObj) {
 }
 
 function processUrls(urls, tweetObj) {
-  urls.forEach((urlObj, index) => {
-    var quotedTweetHtml = '';
+  urls.forEach((urlObj) => {
     var start = urlObj.start;
     var end = urlObj.end;
     var urlToReplace = tweetObj.text.substring(start, end);
 
-    if (index === urls.length - 1 && tweetObj.quoted_status) {
-      quotedTweetHtml = parseTweets(tweetObj.quoted_status).html;
-      quotedTweetHtml = `<div class="quoted-tweet">${quotedTweetHtml}</div>`;
-    }
+    // TODO: if `urlObj.expanded_url` is another tweet, we could expand
+    // it into some html that shows the embedded tweet.
 
-    var finalText =
-      quotedTweetHtml || urlObj.display_url.link(urlObj.expanded_url);
+    var finalText = urlObj.display_url.link(urlObj.expanded_url);
     tweetObj.html = tweetObj.html.replace(urlToReplace, finalText);
   });
 }
