@@ -66,8 +66,8 @@ function processSymbols(symbols, tweetObj) {}
 
 function processUserMentions(users, tweetObj) {
   users.forEach((userObj) => {
-    var anchor = ('@' + userObj.screen_name).link('http://twitter.com/' + userObj.screen_name);
-    var regex = new RegExp('@' + userObj.screen_name, 'gi' );
+    var anchor = ('@' + userObj.username).link('http://twitter.com/' + userObj.username);
+    var regex = new RegExp('@' + userObj.username, 'gi' );
     tweetObj.html = tweetObj.html.replace(regex, anchor);
   });
 }
