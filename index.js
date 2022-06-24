@@ -40,7 +40,12 @@ function parseTweet(tweetObj) {
         processorObj =
           entity === 'media' ? tweetObj.extended_entities.media : processorObj;
 
-        entityProcessors[entity](processorObj, tweetObj);
+        var entityProcessorsFn = entityProcessors[entity];
+        if (entityProcessorsFn) {
+          entityProcessorsFn(processorObj, tweetObj);
+        } else {
+          console.debug('No processor found for', entity);
+        }
       }
     });
   }
