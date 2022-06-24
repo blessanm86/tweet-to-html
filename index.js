@@ -9,7 +9,7 @@ function parseTweets(tweets, opts) {
   return Array.isArray(tweets) ? tweets.map(parseTweet) : parseTweet(tweets);
 }
 
-function parseTweet(tweetObj) {
+function parseTweet(tweetData) {
   var entityProcessors = {
     hashtags: processHashTags,
     symbols: processSymbols,
@@ -17,7 +17,8 @@ function parseTweet(tweetObj) {
     urls: processUrls,
     media: processMedia
   };
-
+  var tweetObj = tweetData.data;
+  var includes = tweetData.includes;
   var entities = tweetObj.entities || {};
   var processorObj;
 
@@ -41,7 +42,7 @@ function parseTweet(tweetObj) {
 
         var entityProcessorsFn = entityProcessors[entity];
         if (entityProcessorsFn) {
-          entityProcessorsFn(processorObj, tweetObj);
+          entityProcessorsFn(processorObj, tweetObj, includes);
         } else {
           console.debug('No processor found for', entity);
         }
@@ -72,16 +73,37 @@ function processUserMentions(users, tweetObj) {
   });
 }
 
-function processUrls(urls, tweetObj) {
+function processUrls(urls, tweetObj, includes) {
   urls.forEach((urlObj) => {
+    var quotedTweetHtml = '';
     var start = urlObj.start;
     var end = urlObj.end;
     var urlToReplace = tweetObj.text.substring(start,end);
 
-    // TODO: if `urlObj.expanded_url` is another tweet, we could expand
-    // it into some html that shows the embedded tweet.
+    // handle quoted tweets
+    // TODO: check expanded url more specifically for tweet URLs, not
+    // just the hostname
+    if (new URL(urlObj.expanded_url).hostname === 'twitter.com') { 
+      var quotedTweetId = urlObj.expanded_url.match(/\/(\d+)$/)[1]
+      var referenced_tweets = tweetObj.referenced_tweets || [];
 
-    var finalText = urlObj.display_url.link(urlObj.expanded_url);
+      var quotedTweetReference = referenced_tweets.find(function(tweet) {
+        return tweet.id === quotedTweetId;
+      });
+
+      var includedTweets = includes.tweets || [];
+      var quotedTweet = includedTweets.find(tweet => {
+        return tweet.id === quotedTweetReference.id;
+      });
+
+      if (quotedTweet) {
+        // TODO: what happens if this quoted tweet _also_ quotes another tweet?
+        quotedTweetHtml = parseTweets({ data: quotedTweet }).html;
+        quotedTweetHtml = `<div class="quoted-tweet">${quotedTweetHtml}</div>`
+      }
+    }
+
+    var finalText = quotedTweetHtml || urlObj.display_url.link(urlObj.expanded_url);
     tweetObj.html = tweetObj.html.replace(urlToReplace, finalText);
   });
 }
