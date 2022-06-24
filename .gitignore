@@ -2,3 +2,4 @@
 .idea
 .parcel-cache
 dist
+.eslintcache
