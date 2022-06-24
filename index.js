@@ -13,7 +13,7 @@ function parseTweet(tweetObj) {
   var entityProcessors = {
     hashtags: processHashTags,
     symbols: processSymbols,
-    user_mentions: processUserMentions,
+    mentions: processUserMentions,
     urls: processUrls,
     media: processMedia
   };
