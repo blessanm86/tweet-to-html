@@ -1,14 +1,14 @@
-var tweetToHTML = require('../');
-var tweetWithVideo = require('../test/tweets/tweet-with-video');
-var tweetWithEmoji = require('../test/tweets/tweet-with-emoji');
-var tweetWithQuotedTweet = require('../test/tweets/tweet-with-quoted-tweet');
-const styleHTML = require('./html-beautfiy');
+import tweetToHTML from '../';
+import tweetWithVideo from '../test/tweets/v2/tweet-with-video';
+import tweetWithEmoji from '../test/tweets/v2/tweet-with-emoji';
+import tweetWithQuotedTweet from '../test/tweets/v2/tweet-with-quoted-tweet';
+import styleHTML from './html-beautfiy';
 
 function encodeHTML(html) {
   var tagsToReplace = {
     '&': '&amp;',
     '<': '&lt;',
-    '>': '&gt;'
+    '>': '&gt;',
   };
 
   function replaceTag(tag) {
@@ -18,9 +18,21 @@ function encodeHTML(html) {
   return html.replace(/[&<>]/g, replaceTag);
 }
 
-document.getElementById('input-1').innerHTML = JSON.stringify(tweetWithVideo, null, 2);
-document.getElementById('input-2').innerHTML = JSON.stringify(tweetWithEmoji, null, 2);
-document.getElementById('input-3').innerHTML = JSON.stringify(tweetWithQuotedTweet, null, 2);
+document.getElementById('input-1').innerHTML = JSON.stringify(
+  tweetWithVideo,
+  null,
+  2
+);
+document.getElementById('input-2').innerHTML = JSON.stringify(
+  tweetWithEmoji,
+  null,
+  2
+);
+document.getElementById('input-3').innerHTML = JSON.stringify(
+  tweetWithQuotedTweet,
+  null,
+  2
+);
 
 var html1 = tweetToHTML.parse(tweetWithVideo).html;
 var html2 = tweetToHTML.parse(tweetWithEmoji).html;

@@ -8,6 +8,7 @@ module.exports = {
   extends: ['eslint:recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   rules: {
     'prettier/prettier': 'error',
@@ -19,6 +20,12 @@ module.exports = {
       globals: {
         describe: true,
         it: true,
+      },
+    },
+    {
+      files: ['demo/**/*.js'],
+      env: {
+        browser: true,
       },
     },
   ],
