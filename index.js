@@ -1,4 +1,4 @@
-var twemoji = require('twemoji');
+const twemoji = require('twemoji');
 
 module.exports.parse = parseTweets;
 

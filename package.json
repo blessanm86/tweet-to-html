@@ -2,11 +2,15 @@
   "name": "tweet-to-html",
   "version": "2.0.0",
   "description": "Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.",
-  "main": "index.js",
+  "source": "index.js",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
   "scripts": {
     "test": "mocha",
-    "build": "browserify demo/js/demo.js -o demo/js/browserify-build.js",
-    "lint": "eslint . --cache"
+    "demo": "parcel demo/index.html",
+    "lint": "eslint . --cache",
+    "watch": "parcel watch",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -41,8 +45,10 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "mocha": "^2.3.3",
+    "parcel": "^2.6.2",
     "prettier": "^2.7.1"
   },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "engines": {
     "node": "14.* || >= 16"
   },

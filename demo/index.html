@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>tweet-to-html - Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.</title>
+    <meta name="description" content="Browser friendly package that converts twitter's API tweet objects text property to HTML. Takes care of all the entities and its links. Handles emoji's.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./demo.css">
+  </head>
+  <body class="demo-application">
+
+    <header>
+      <h2>tweet-to-html</h2>
+      <p>
+        Browser friendly package that converts twitter's API tweet objects text property to HTML.
+        <br/>Takes care of all the entities and its links. Handles emoji's.
+      </p>
+      <a href="https://github.com/blessenm/tweet-to-html"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    </header>
+
+    <h3><a class="demo-instructions-link" href="/tweet-to-html#readme">Go to README for usage instructions.</a></h3>
+
+    <div class="demo-row">
+      <div class="demo-column">
+        <h4>Input JSON tweet with Video</h4>
+        <pre id="input-1"></pre>
+      </div>
+
+      <div class="demo-column">
+        <h4>Output HTML</h4>
+        <pre id="output-1"></pre>
+      </div>
+
+      <div class="demo-column demo-render">
+        <h4>Rendered Tweet</h4>
+        <div id="render-1" class="tweet-markup"></div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-column">
+        <h4>Input JSON tweet with Emoji</h4>
+        <pre id="input-2"></pre>
+      </div>
+
+      <div class="demo-column">
+        <h4>Output HTML</h4>
+        <pre id="output-2"></pre>
+      </div>
+
+      <div class="demo-column demo-render">
+        <h4>Rendered Tweet</h4>
+        <div id="render-2" class="tweet-markup"></div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-column">
+        <h4>Input JSON tweet with Quoted Tweet</h4>
+        <pre id="input-3"></pre>
+      </div>
+
+      <div class="demo-column">
+        <h4>Output HTML</h4>
+        <pre id="output-3"></pre>
+      </div>
+
+      <div class="demo-column demo-render">
+        <h4>Rendered Tweet</h4>
+        <div id="render-3" class="tweet-markup"></div>
+      </div>
+    </div>
+
+    <script src="./demo.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+.demo-application {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+header {
+    background: #263346;
+    padding: 20px;
+}
+header h2 {
+    color: #F98229;
+    margin: 0;
+}
+header p {
+    color: #C7D3E6;
+}
+.demo-row {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+.demo-column {
+    width: 300px;
+    flex: 1;
+    margin: 20px;
+}
+.demo-column pre {
+    overflow: scroll;
+    height: 300px;
+}
+.demo-render {
+    width: 500px;
+    flex: none;
+}
+.demo-instructions-link {
+    color: #F98229;
+    margin-left: 20px;
+}
+
+
+/* Tweet Styles*/
+.tweet-markup .emoji {
+    width: 1rem;
+    margin: 0 0.2rem;
+}
+
+.tweet-markup video, .tweet-markup img:not(.emoji) {
+    width: 100%;
+    margin: .5rem 0;
+}
+
+.tweet-markup a{
+    color: #4183c4;
+    text-decoration: none;
+}
+
+.tweet-markup a:hover{
+    text-decoration: underline;
+}
+
+.tweet-markup .quoted-tweet {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
